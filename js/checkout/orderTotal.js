@@ -86,7 +86,7 @@ export function renderPaymentTotal(){
         const Id = new Date().getTime()
         document.querySelector('.js-place-order').
             addEventListener('click', ()=>{
-                //location.href = 'order.html'
+                location.href = 'order.html'
                 
                 let orderPlace = dayjs().format('MMMM D');
                 let productId, quantity;
