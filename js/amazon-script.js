@@ -1,5 +1,8 @@
 import {products} from '../js/data/product-data.js'; 
+import { toggleBurgerMenu } from './burger-button.js'; 
 const mainElement = document.querySelector('.main-product-grid');
+
+toggleBurgerMenu();
 addProduct();
 
 

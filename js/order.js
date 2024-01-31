@@ -1,7 +1,11 @@
 import {orders} from './data/ordered-data.js';
+import { toggleBurgerMenu } from './burger-button.js';
 import {money} from './util/moneyConvert.js';
 import {products} from './data/product-data.js'
 import { addToCart,updateCartQuantity } from './data/cart.js';
+import { trackData,saveTrack } from './data/track-data.js';
+toggleBurgerMenu();
+
 let orderHtml = ``;
 
 orders.forEach(order => {
@@ -54,7 +58,37 @@ orders.forEach(order => {
             addToCart(matchItemId.productId, 1)
             updateCartQuantity();
         })
+
+
     })
+
+    document.querySelectorAll('.js-track-package-button').forEach(trackBtn => 
+        {trackBtn.addEventListener('click', ()=>{
+            location.href = 'tracking.html'
+            let {trackPackageId, cartItemId} = trackBtn.dataset;
+            console.log(trackPackageId, cartItemId);
+            let matchOrder = '';
+            let matchItem = '';
+            orders.forEach(order => {
+                if(order.Id===Number(trackPackageId)){
+                    matchOrder = order;
+                }
+            })
+            matchOrder.orderList.forEach(list => {
+                if(list.productId === cartItemId){
+                    matchItem = list;
+                }
+            })
+            trackData.orderId = trackPackageId;
+            trackData.productId = cartItemId;
+            trackData.arrivalDate = matchItem.arrivalDate;
+            trackData.dateOrdered = matchOrder.orderPlace;
+            trackData.quantity = matchItem.quantity;
+            saveTrack();
+            console.log(trackData);
+            })
+        });
+    
 });
 
 function productOrder(order){
@@ -93,7 +127,10 @@ function productOrder(order){
                         Buy it again</button>
                         <button class="track-package-button-resize">Track package</button>
                 </div>
-                <button class="track-package-button">Track package</button>
+                <button class="track-package-button js-track-package-button" 
+                data-track-package-id= "${order.Id}"
+                data-cart-item-id= "${product.productId}"
+                >Track package</button>
             </div>`
     })
     return productGridHTML;

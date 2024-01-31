@@ -4,7 +4,6 @@ import {deliveryOption} from "../../js/data/deliveryOption.js";
 import {getProduct} from '../../js/data/product-data.js'; 
 import {money} from '../util/moneyConvert.js'
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
-
 export function displayCart(){
     updateCartQuantity();
     renderPaymentTotal();
@@ -65,6 +64,14 @@ export function displayCart(){
                             container.remove();
                             updateCartQuantity();
                             renderPaymentTotal();
+                            if(cart.length === 0){
+                                let empty = `
+                                <div class="empty-product">
+                                <p>Your cart is empty</p>
+                                <a href="amazon.html" class="view-products-btn">View product</a>
+                            </div>`;
+                            checkoutContainer.innerHTML = empty;
+                            }
                         });
                     });
                 });

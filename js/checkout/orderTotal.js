@@ -81,13 +81,11 @@ export function renderPaymentTotal(){
         `;
         orderSummaryElement.innerHTML = paymentSummaryHtml;
         orderCart()
-
-    function orderCart(){
-        const Id = new Date().getTime()
-        document.querySelector('.js-place-order').
+        function orderCart(){
+            document.querySelector('.js-place-order').
             addEventListener('click', ()=>{
                 location.href = 'order.html'
-                
+                const Id = new Date().getTime()
                 let orderPlace = dayjs().format('MMMM D');
                 let productId, quantity;
                 let orderList = [];
@@ -117,7 +115,7 @@ export function renderPaymentTotal(){
                 cart.splice(0, cart.length);
                 displayCart();
             })
-    }
+        }
 }
 
 

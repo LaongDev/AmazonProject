@@ -5,7 +5,7 @@ const cartLink = document.querySelector('.burger-cart');
 burgerBtn.addEventListener('click', toggleBurgerMenu);
 
 let isClick = false;
-function toggleBurgerMenu(){
+export function toggleBurgerMenu(){
 
     if(!isClick){
         burgerListElement.style.height = '80px';
