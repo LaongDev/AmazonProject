@@ -125,7 +125,11 @@ function productOrder(order){
                     >
                         <img class="order-again-icon" src="images/buy-again.png" alt="">
                         Buy it again</button>
-                        <button class="track-package-button-resize">Track package</button>
+                        <button class="track-package-button-resize 
+                        js-track-package-button"
+                        data-track-package-id= "${order.Id}"
+                        data-cart-item-id= "${product.productId}"
+                        >Track package</button>
                 </div>
                 <button class="track-package-button js-track-package-button" 
                 data-track-package-id= "${order.Id}"
