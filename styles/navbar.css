@@ -170,7 +170,7 @@
 
     .list-right-nav-container{
         position: fixed;
-        top: 60px;
+        top: 0px;
         height: 0;
         left: 0;
         right: 0;
