@@ -141,3 +141,7 @@
     background-color: rgb(230, 187, 0);
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.10);
 }
+.no-products{
+    margin: 10px 0 0 10px;
+    grid-column: span 2;
+}

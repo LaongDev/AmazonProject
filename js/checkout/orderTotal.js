@@ -86,12 +86,13 @@ export function renderPaymentTotal(){
             addEventListener('click', ()=>{
                 location.href = 'order.html'
                 const Id = new Date().getTime()
-                let orderPlace = dayjs().format('MMMM D');
+                let orderPlace = dayjs().format('YYYY MMMM D');
+                console.log(orderPlace)
                 let productId, quantity;
                 let orderList = [];
                 cart.forEach(cartItem => {
                     productId = cartItem.productId;
-                    const arrivalDate = deliveryDate(cartItem);//current
+                    const arrivalDate = `${deliveryDate(cartItem)}, ${dayjs().format('YYYY')}`;//current
                     console.log(arrivalDate);
                     console.log(cartItem.deliveryOptionId);
                     quantity = cartItem.productQuantity;
@@ -102,7 +103,6 @@ export function renderPaymentTotal(){
                             quantity
                         }
                     )
-                    console.log(arrivalDate);
                 });
                 orders.push({
                     orderPlace,

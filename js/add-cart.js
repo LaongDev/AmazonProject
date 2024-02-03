@@ -1,5 +1,5 @@
-import {updateCartQuantity, addToCart, cart} from '../js/data/cart.js';
-const addCartBtn = document.querySelectorAll('.js-add-to-cart');
+import {updateCartQuantity, addToCart} from '../js/data/cart.js';
+
 updateCartQuantity();
 const timeIDs = {};
 function handleNotification(productId) {
@@ -12,13 +12,18 @@ function handleNotification(productId) {
         delete timeIDs[productId]; // Clear the stored timeout ID after completion
     }, 2000);
 }
-addCartBtn.forEach(addCart => {
-    addCart.addEventListener('click', () => {
-        const {productId} = addCart.dataset;
-        const selectQuantity = document.querySelector(`#js-product-quantity-${productId}`);
-        const productQuantity = Number(selectQuantity.value);
-        addToCart(productId, productQuantity);
-        updateCartQuantity();
-        handleNotification(productId);
+export function addCartFun(){
+    const addCartBtn = document.querySelectorAll('.js-add-to-cart');
+    addCartBtn.forEach(addCart => {
+        addCart.addEventListener('click', () => {
+            console.log('click')
+            const {productId} = addCart.dataset;
+            const selectQuantity = document.querySelector(`#js-product-quantity-${productId}`);
+            const productQuantity = Number(selectQuantity.value);
+            addToCart(productId, productQuantity);
+            updateCartQuantity();
+            handleNotification(productId);
+        });
     });
-});
+    
+}

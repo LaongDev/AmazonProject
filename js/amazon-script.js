@@ -1,13 +1,11 @@
 import {products} from '../js/data/product-data.js'; 
+import {searchProduct} from './filter-product.js'
 import { toggleBurgerMenu } from './burger-button.js'; 
+import { addCartFun } from './add-cart.js';
 const mainElement = document.querySelector('.main-product-grid');
+let searchElement = document.querySelector('.js-middle-search-bar');
 
-toggleBurgerMenu();
-addProduct();
-
-
-function addProduct(){
-    
+export function renderProducts(products){
     let productHtmlList = ``;
 
     products.forEach((product) => {
@@ -66,6 +64,20 @@ function addProduct(){
     </div>
         `;
         productHtmlList += html;
-        mainElement.innerHTML = productHtmlList;
+        
     });
+    mainElement.innerHTML = productHtmlList;
 }
+document.querySelector('.amazon-link').addEventListener('click', () => {
+    localStorage.removeItem('search');
+})
+document.querySelector('.return-refund').addEventListener('click',() => {
+    localStorage.removeItem('search');
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    toggleBurgerMenu();
+    renderProducts(products);
+    searchProduct(searchElement);
+    addCartFun();
+});
