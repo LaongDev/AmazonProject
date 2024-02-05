@@ -7,7 +7,24 @@ export function getProduct(productId){
 });
 return match;
 }
-
+export function filtering(searchElement){
+  let searchInput = searchElement.value.toLowerCase();
+  let filter = products.filter((product) => {
+  return product.keywords.some(keyword => keyword.toLowerCase().includes(searchInput));
+ });
+ 
+ saveSearch(searchInput)
+ if(filter.length === 0){
+  let html = `<p class="no-products">Product you searched has no results</p>`; 
+  document.querySelector('.js-main-product-grid').innerHTML = html
+ }
+ else{
+  renderProducts(filter);
+ }
+}
+export function saveSearch(searchInput){
+  return localStorage.setItem('search', searchInput);
+}
 
 export const products = [
     {

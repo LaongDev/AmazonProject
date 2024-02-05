@@ -4,7 +4,8 @@ import {money} from './util/moneyConvert.js';
 import {products} from './data/product-data.js'
 import { addToCart,updateCartQuantity } from './data/cart.js';
 import { trackData,saveTrack } from './data/track-data.js';
-import { saveSearch } from './filter-product.js';
+import { saveSearch } from './data/product-data.js';
+
 let orderHtml = ``;
 
 orders.forEach(order => {
@@ -144,5 +145,4 @@ let searchElement = document.querySelector('.js-middle-search-bar')
 document.querySelector('.js-middle-search-button').addEventListener('click', ()=>{
     saveSearch(searchElement.value)
     location.href = 'amazon.html'
-    
 });

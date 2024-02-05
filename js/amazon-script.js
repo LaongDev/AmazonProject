@@ -67,6 +67,7 @@ export function renderProducts(products){
         
     });
     mainElement.innerHTML = productHtmlList;
+
 }
 document.querySelector('.amazon-link').addEventListener('click', () => {
     localStorage.removeItem('search');
