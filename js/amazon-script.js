@@ -72,9 +72,7 @@ export function renderProducts(products){
 document.querySelector('.amazon-link').addEventListener('click', () => {
     localStorage.removeItem('search');
 })
-document.querySelector('.return-refund').addEventListener('click',() => {
-    localStorage.removeItem('search');
-})
+
 
 document.addEventListener('DOMContentLoaded', () => {
     toggleBurgerMenu();

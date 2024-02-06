@@ -1,3 +1,4 @@
+import { renderProducts } from "../amazon-script.js";
 export function getProduct(productId){
   let match;
   products.forEach((product) => {
@@ -12,7 +13,6 @@ export function filtering(searchElement){
   let filter = products.filter((product) => {
   return product.keywords.some(keyword => keyword.toLowerCase().includes(searchInput));
  });
- 
  saveSearch(searchInput)
  if(filter.length === 0){
   let html = `<p class="no-products">Product you searched has no results</p>`; 
@@ -23,7 +23,7 @@ export function filtering(searchElement){
  }
 }
 export function saveSearch(searchInput){
-  return localStorage.setItem('search', searchInput);
+  localStorage.setItem('search', searchInput);
 }
 
 export const products = [
